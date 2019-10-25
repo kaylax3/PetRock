@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class HUDController : MonoBehaviour
 {
     public Text HungerText;
@@ -32,16 +31,30 @@ public class HUDController : MonoBehaviour
 
     public void FeedRock()
     {
-        Rock.GetComponent<RockController>().hunger += 2;
+        if (Rock != null)
+        {
+            Rock.GetComponent<RockController>().hunger += 2;
+        }
     }
 
     public void PlayWithRock()
     {
-        Rock.GetComponent<RockController>().friendship += 2;
+        if (Rock != null)
+        {
+            Rock.GetComponent<RockController>().friendship += 2;
+        }
     }
 
     public void GoToVet()
     {
-        Rock.GetComponent<RockController>().isSick = false;
+        if (Rock != null)
+        {
+            Rock.GetComponent<RockController>().isSick = false;
+        }
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.LogError("Game Quit");
     }
 }
